@@ -1,89 +1,199 @@
-// ============================================
-// 💝 CUSTOMIZE YOUR VALENTINE'S WEBSITE HERE 💝
-// ============================================
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Forever With JOYA 💍</title>
 
-const CONFIG = {
-    // Your Valentine's name that will appear in the title
-    // Example: "Jade", "Sarah", "Mike"
-    valentineName: "Joya",
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #1e1e2f, #0f0f1a);
+    color: white;
+    text-align: center;
+}
 
-    // The title that appears in the browser tab
-    // You can use emojis! 💝 💖 💗 💓 💞 💕
-    pageTitle: "Will You Be My Valentine? 💝",
+/* Stars */
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    animation: twinkle 2s infinite alternate;
+}
+@keyframes twinkle {
+    from {opacity: 0.2;}
+    to {opacity: 1;}
+}
 
-    // Floating emojis that appear in the background
-    // Find more emojis at: https://emojipedia.org
-    floatingEmojis: {
-        hearts: ['❤️', '💖', '💝', '💗', '💓'],  // Heart emojis
-        bears: ['🧸', '🐻']                       // Cute bear emojis
-    },
+/* Pages */
+.page {
+    display: none;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+.active {
+    display: flex;
+}
 
-    // Questions and answers
-    // Customize each question and its possible responses
-    questions: {
-        first: {
-            text: "Do you like me?",                                    // First interaction
-            yesBtn: "Yes",                                             // Text for "Yes" button
-            noBtn: "No",                                               // Text for "No" button
-            secretAnswer: "I don't like you, I love you! ❤️"           // Secret hover message
-        },
-        second: {
-            text: "How much do you love me?",                          // For the love meter
-            startText: "This much!",                                   // Text before the percentage
-            nextBtn: "Next ❤️"                                         // Text for the next button
-        },
-        third: {
-            text: "Will you be my Valentine on February 14th, 2025? 🌹", // The big question!
-            yesBtn: "Yes!",                                             // Text for "Yes" button
-            noBtn: "No"                                                 // Text for "No" button
-        }
-    },
+/* Buttons */
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
 
-    // Love meter messages
-    // They show up depending on how far they slide the meter
-    loveMessages: {
-        extreme: "WOOOOW You love me that much?? 🥰🚀💝",  // Shows when they go past 5000%
-        high: "To infinity and beyond! 🚀💝",              // Shows when they go past 1000%
-        normal: "And beyond! 🥰"                           // Shows when they go past 100%
-    },
+.yesBtn {
+    background: #ff4d6d;
+    color: white;
+}
 
-    // Messages that appear after they say "Yes!"
-    celebration: {
-        title: "Yay! I'm the luckiest person in the world! 🎉💝💖💝💓",
-        message: "Now come get your gift, a big warm hug and a huge kiss!",
-        emojis: "🎁💖🤗💝💋❤️💕"  // These will bounce around
-    },
+.noBtn {
+    background: grey;
+    color: white;
+}
 
-    // Color scheme for the website
-    // Use https://colorhunt.co or https://coolors.co to find beautiful color combinations
-    colors: {
-        backgroundStart: "#ffafbd",      // Gradient start (try pastel colors for a soft look)
-        backgroundEnd: "#ffc3a0",        // Gradient end (should complement backgroundStart)
-        buttonBackground: "#ff6b6b",     // Button color (should stand out against the background)
-        buttonHover: "#ff8787",          // Button hover color (slightly lighter than buttonBackground)
-        textColor: "#ff4757"             // Text color (make sure it's readable!)
-    },
+/* Fireworks */
+.firework {
+    position: absolute;
+    font-size: 25px;
+    animation: explode 1s ease-out forwards;
+}
+@keyframes explode {
+    0% {transform: scale(0); opacity:1;}
+    100% {transform: scale(3); opacity:0;}
+}
 
-    // Animation settings
-    // Adjust these if you want faster/slower animations
-    animations: {
-        floatDuration: "15s",           // How long it takes hearts to float up (10-20s recommended)
-        floatDistance: "50px",          // How far hearts move sideways (30-70px recommended)
-        bounceSpeed: "0.5s",            // Speed of bouncing animations (0.3-0.7s recommended)
-        heartExplosionSize: 1.5         // Size of heart explosion effect (1.2-2.0 recommended)
-    },
+/* Ring */
+.ring {
+    font-size: 60px;
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+</style>
+</head>
 
-    // Background Music (Optional)
-    // Add your own music URL after getting proper licenses
-    music: {
-        enabled: true,                     // Music feature is enabled
-        autoplay: true,                    // Try to autoplay (note: some browsers may block this)
-        musicUrl: "https://res.cloudinary.com/dncywqfpb/video/upload/v1738399057/music_qrhjvy.mp3", // Music streaming URL
-        startText: "🎵 Play Music",        // Button text to start music
-        stopText: "🔇 Stop Music",         // Button text to stop music
-        volume: 0.5                        // Volume level (0.0 to 1.0)
+<body>
+
+<!-- Tum Hi Ho -->
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/Umqb9KENgmk?autoplay=1&loop=1&playlist=Umqb9KENgmk"
+allow="autoplay">
+</iframe>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <h1>JOYA 🤍<br>Do you love me?</h1>
+    <div>
+        <button class="yesBtn" id="yes1" onclick="nextPage(2)">Yes 🤍</button>
+        <button class="noBtn" id="no1" onclick="growYes('yes1','no1')">No</button>
+    </div>
+</div>
+
+<!-- PAGE 2 (Secret Date) -->
+<div class="page" id="page2">
+    <h1>Enter the day our story began 💌<br>(DDMM)</h1>
+    <input id="codeInput" type="text" placeholder="1301" style="padding:10px;border-radius:20px;border:none;text-align:center;">
+    <br><br>
+    <button class="yesBtn" onclick="checkCode()">Unlock 🤍</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+    <h1>JOYA 🤍<br>Will you stay with me forever?</h1>
+    <div>
+        <button class="yesBtn" id="yesFinal" onclick="celebrate()">Yes 🤍</button>
+        <button class="noBtn" id="noFinal" onclick="growYes('yesFinal','noFinal')">No</button>
+    </div>
+</div>
+
+<!-- PAGE 4 (MARRY ME) -->
+<div class="page" id="page4">
+    <div class="ring">💍</div>
+    <h1>JOYA 🤍<br><br>Will you marry me?</h1>
+    <div>
+        <button class="yesBtn" id="yesMarry" onclick="finalPage()">YES 💍</button>
+        <button class="noBtn" id="noMarry" onclick="growYes('yesMarry','noMarry')">No</button>
+    </div>
+</div>
+
+<!-- FINAL PAGE -->
+<div class="page" id="page5">
+    <h1>
+        JOYA 🤍<br><br>
+        From 13 January…<br>
+        To Forever ♾️<br><br>
+        I choose you.<br>
+        Always.
+    </h1>
+</div>
+
+<script>
+
+// Stars
+for (let i = 0; i < 120; i++) {
+    let star = document.createElement("div");
+    star.className = "star";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(star);
+}
+
+function nextPage(num) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById("page" + num).classList.add("active");
+}
+
+function growYes(yesId, noId) {
+    let yes = document.getElementById(yesId);
+    let no = document.getElementById(noId);
+
+    yes.style.fontSize = (parseFloat(window.getComputedStyle(yes).fontSize) + 8) + "px";
+    no.style.fontSize = (parseFloat(window.getComputedStyle(no).fontSize) - 5) + "px";
+
+    if (parseFloat(window.getComputedStyle(no).fontSize) <= 5) {
+        no.style.display = "none";
     }
-};
+}
 
-// Don't modify anything below this line unless you know what you're doing
-window.VALENTINE_CONFIG = CONFIG; 
+function checkCode() {
+    let code = document.getElementById("codeInput").value;
+    if (code === "1301") {
+        nextPage(3);
+    } else {
+        alert("Hint: 13 January 🤍");
+    }
+}
+
+function celebrate() {
+    for (let i = 0; i < 20; i++) {
+        let fire = document.createElement("div");
+        fire.className = "firework";
+        fire.innerHTML = "✨";
+        fire.style.left = Math.random() * 100 + "vw";
+        fire.style.top = Math.random() * 100 + "vh";
+        document.body.appendChild(fire);
+        setTimeout(() => fire.remove(), 1000);
+    }
+    setTimeout(() => nextPage(4), 800);
+}
+
+function finalPage() {
+    nextPage(5);
+}
+</script>
+
+</body>
+</html>
